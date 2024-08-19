@@ -17,4 +17,7 @@ class Class(Base):
     school: Mapped[int] = mapped_column(Integer, ForeignKey('school.id'))
     count_students: Mapped[int] = mapped_column(Integer)
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
